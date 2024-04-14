@@ -2,7 +2,9 @@
 
 This patch adds six more synth slots without sacrificing any pattern slots.
 
-To install the extra synths add more synth modules with names
+## Installation and use
+
+To install the extra synths add more synth modules with folder names
 `7-...` to `12-...`. Note that you need a hyphen immediately after the slot
 number.
 
@@ -18,6 +20,8 @@ sound.
 The double tap time is 500ms. That's the time required from pressing
 a button down the first time, to pressing the same button down a second time.
 
+## Changes
+
 The changes to allow this are all in mother.pd:
 * In [pd synth-select] there is a new patch [pd synth-select-layer].
 * In [pd synth-select] there is a new selection object to load synths 7 to 12.
@@ -26,6 +30,14 @@ The changes to allow this are all in mother.pd:
 * In [pd auto-load-synths] we load filenames that start with `%d-` instead
 of just `%d`, in case a folder called `10-MySynth` gets confused with
 `1-MyOtherSynth`.
+
+## Important notes
+
+This is a direct fork of v1.2 of the 201 Pocket Piano software. That means
+that either you should install all the files, or---if you just want to
+copy over mother.pd---you should be copying it over the default v1.2
+software. Otherwise it may not work as expected, and if you've made your own
+changes to v1.2 you will lose those.
 
 Beware that loading six more synths will add to the device's startup time.
 This may or may not be noticeable.
