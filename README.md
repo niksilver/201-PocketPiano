@@ -1,3 +1,28 @@
+# Note for sustain-pedal branch
+
+This is a branch off software version 1.2. It has an extra patch
+[pd sustain-pedal] in the mother.pd, inserted between
+[pd octave-transpose] and [s notes-to-pattern].
+This allows a sustain pedal to work with pressed notes.
+
+To use this patch, you will need to (a) put it in place and
+(b) optionally configure it.
+
+To put it in place you can just replace the existing mother.pd on the
+device with the version here. This will provide you with the v1.2 mother.pd
+with the sustain pedal function. However, if you've got a mother.pd which has
+diverged from v1.2 then instead just insert your own [pd sustain-pedal]
+and copy the contents of that patch from this branch. It is entirely
+self-contained.
+
+You may not need to configure the patch - it uses some standard values.
+If you do want configure it, open up [pd sustain-pedal] and change any values
+you think necessary. These are: the sustain CC parameter number (default 64,
+which is the MIDI sustain standard), and the threshold for what is considered
+on/off (default is the MIDI standard of off being less than 64, on being 64 or
+more).
+
+
 # 201 PocketPiano
 
 The software for the pocket piano consists of two parts: a PureData (Pd) patch and a controller program. 
