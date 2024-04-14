@@ -1,4 +1,4 @@
-#N canvas 309 25 1131 748 10;
+#N canvas 146 -1068 1132 773 10;
 #X declare -path lib;
 #X declare -lib hcs;
 #X obj 150 645 catch~ outL;
@@ -455,7 +455,7 @@
 #X connect 20 0 12 0;
 #X connect 21 0 20 0;
 #X restore 315 96 pd leds;
-#N canvas 328 174 667 525 synth-select 0;
+#N canvas 60 -1059 1305 934 synth-select 1;
 #X obj 66 37 stripnote;
 #X obj 66 13 r shift-keys;
 #X obj 65 82 sel 11 12 14 16 17 19, f 26;
@@ -498,6 +498,82 @@
 #X msg 191 427 symbol s\$1-enable;
 #X obj 151 240 t f f b;
 #X obj 349 134 r set-synth-num;
+#X obj 596 32 key;
+#X obj 597 137 print LEFT;
+#X obj 684 137 print RIGHT;
+#N canvas 499 -1045 1024 769 synth-select-layer 1;
+#X obj 70 30 inlet;
+#X text 116 30 Key number;
+#X obj 480 270 delay 500;
+#X obj 144 151 unpack f f;
+#X obj 70 196 spigot 1;
+#X obj 156 197 spigot 0;
+#X msg 480 295 1 0;
+#X obj 156 337 ==;
+#X obj 156 362 select 0 1;
+#X obj 70 461 t f f;
+#X obj 256 452 t f f;
+#X obj 70 526 outlet;
+#X obj 256 526 outlet;
+#X obj 536 235 t b b;
+#X msg 563 293 0 1;
+#X obj 70 161 t f f;
+#X obj 97 83 s synth-select-this-key;
+#X obj 184 310 r synth-select-last-key;
+#X obj 480 330 s synth-select-layer;
+#X obj 144 126 r synth-select-layer;
+#X obj 368 530 s synth-select-last-key;
+#X obj 256 420 v synth-select-this-key;
+#X obj 90 420 v synth-select-this-key;
+#X obj 536 197 r synth-select-start-timer;
+#X obj 341 500 t b f;
+#X obj 341 560 s synth-select-start-timer;
+#X obj 740 70 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000;
+#X msg 740 105 1 0;
+#X obj 740 140 s synth-select-layer;
+#X obj 70 55 t f f;
+#X text 280 30 Input a 201PP key. If they key is a double click (the
+second press of that key within 500ms) then it goes to the right outlet.
+Otherwise it goes to the left outlet.;
+#X text 285 127 Switches traffic down the left path (1 0) or the right
+path (0 1)., f 21;
+#X text 170 230 Right path: The key press is a quick second press \,
+but is it the same key as the last one?, f 38;
+#X text 79 231 Left path;
+#X text 536 140 For a short time only send traffic down the right path.
+, f 23;
+#X connect 0 0 29 0;
+#X connect 2 0 6 0;
+#X connect 3 0 4 1;
+#X connect 3 1 5 1;
+#X connect 4 0 9 0;
+#X connect 5 0 7 0;
+#X connect 6 0 18 0;
+#X connect 7 0 8 0;
+#X connect 8 0 22 0;
+#X connect 8 1 21 0;
+#X connect 9 0 11 0;
+#X connect 9 1 24 0;
+#X connect 10 0 12 0;
+#X connect 10 1 24 0;
+#X connect 13 0 2 0;
+#X connect 13 1 14 0;
+#X connect 14 0 18 0;
+#X connect 15 0 4 0;
+#X connect 15 1 5 0;
+#X connect 17 0 7 1;
+#X connect 19 0 3 0;
+#X connect 21 0 10 0;
+#X connect 22 0 9 0;
+#X connect 23 0 13 0;
+#X connect 24 0 25 0;
+#X connect 24 1 20 0;
+#X connect 26 0 27 0;
+#X connect 27 0 28 0;
+#X connect 29 0 15 0;
+#X connect 29 1 16 0;
+#X restore 597 112 pd synth-select-layer;
 #X connect 0 0 2 0;
 #X connect 1 0 0 0;
 #X connect 2 0 4 0;
@@ -525,6 +601,9 @@
 #X connect 22 1 17 0;
 #X connect 22 2 19 0;
 #X connect 23 0 10 0;
+#X connect 24 0 27 0;
+#X connect 27 0 25 0;
+#X connect 27 1 26 0;
 #X restore 315 169 pd synth-select;
 #X obj 136 293 r keys;
 #X obj 590 143 v click-state;
@@ -763,6 +842,18 @@ recording, f 79;
 #X connect 25 5 26 0;
 #X restore 58 105 pd auto-load-synths;
 #N canvas 150 175 450 300 load-synths-here 0;
+#X obj 10 50 synth-slot s1 //wsl.localhost/Ubuntu/home/nik/dev/201-PocketPiano/pd/synths/1-RedMode/module
+;
+#X obj 10 100 synth-slot s2 //wsl.localhost/Ubuntu/home/nik/dev/201-PocketPiano/pd/synths/2-AddMono/module
+;
+#X obj 10 150 synth-slot s3 //wsl.localhost/Ubuntu/home/nik/dev/201-PocketPiano/pd/synths/3-SynthDrums/module
+;
+#X obj 10 200 synth-slot s4 //wsl.localhost/Ubuntu/home/nik/dev/201-PocketPiano/pd/synths/4-Guitar/module
+;
+#X obj 10 250 synth-slot s5 //wsl.localhost/Ubuntu/home/nik/dev/201-PocketPiano/pd/synths/5-Vocal2/module
+;
+#X obj 10 300 synth-slot s6 //wsl.localhost/Ubuntu/home/nik/dev/201-PocketPiano/pd/synths/6-Sample/module
+;
 #X restore 57 130 pd load-synths-here;
 #N canvas 290 25 733 686 auto-load-patterns 0;
 #X obj 280 426 spigot 1;
@@ -838,6 +929,18 @@ recording, f 79;
 #X connect 24 5 27 0;
 #X restore 59 159 pd auto-load-patterns;
 #N canvas 150 175 450 300 load-patterns-here 0;
+#X obj 10 50 pattern-slot p1 //wsl.localhost/Ubuntu/home/nik/dev/201-PocketPiano/pd/patterns/1-thru/module
+;
+#X obj 10 100 pattern-slot p2 //wsl.localhost/Ubuntu/home/nik/dev/201-PocketPiano/pd/patterns/2-pink-mode/module
+;
+#X obj 10 150 pattern-slot p3 //wsl.localhost/Ubuntu/home/nik/dev/201-PocketPiano/pd/patterns/3-octave-cascade/module
+;
+#X obj 10 200 pattern-slot p4 //wsl.localhost/Ubuntu/home/nik/dev/201-PocketPiano/pd/patterns/4-octave-arp/module
+;
+#X obj 10 250 pattern-slot p5 //wsl.localhost/Ubuntu/home/nik/dev/201-PocketPiano/pd/patterns/5-text-pattern-up-down/module
+;
+#X obj 10 300 pattern-slot p6 //wsl.localhost/Ubuntu/home/nik/dev/201-PocketPiano/pd/patterns/6-double-randoms/module
+;
 #X restore 58 184 pd load-patterns-here;
 #N canvas 63 88 642 303 latch-control 0;
 #X obj 121 37 r shift-keys;
@@ -1924,7 +2027,6 @@ OF SUCH DAMAGE.;
 #X connect 8 0 7 0;
 #X connect 8 1 7 0;
 #X restore 216 620 pd flush-stuck-notes;
-#X f 29;
 #X obj 185 530 route note knob1 knob2 knob3;
 #N canvas 50 25 1175 457 knobs 0;
 #X obj 58 236 seq-format-event knob1;
