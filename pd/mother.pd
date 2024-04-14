@@ -1,4 +1,4 @@
-#N canvas 146 -1068 1132 773 10;
+#N canvas 529 -991 1132 773 10;
 #X declare -path lib;
 #X declare -lib hcs;
 #X obj 150 645 catch~ outL;
@@ -455,7 +455,7 @@
 #X connect 20 0 12 0;
 #X connect 21 0 20 0;
 #X restore 315 96 pd leds;
-#N canvas 108 1 1306 912 synth-select 0;
+#N canvas 447 -1024 1306 912 synth-select 0;
 #X obj 66 37 stripnote;
 #X obj 66 13 r shift-keys;
 #X obj 65 102 sel 11 12 14 16 17 19, f 26;
@@ -498,7 +498,7 @@
 #X msg 191 447 symbol s\$1-enable;
 #X obj 151 260 t f f b;
 #X obj 589 164 r set-synth-num;
-#N canvas 763 -942 1024 769 synth-select-layer 0;
+#N canvas 763 0 1024 769 synth-select-layer 0;
 #X obj 70 30 inlet;
 #X text 116 30 Key number;
 #X obj 480 270 delay 500;
@@ -774,7 +774,7 @@ recording, f 79;
 #X connect 9 0 6 1;
 #X connect 9 1 8 0;
 #X restore 161 407 pd octave-transpose;
-#N canvas 288 24 706 701 auto-load-synths 1;
+#N canvas 444 -1014 706 701 auto-load-synths 0;
 #X obj 319 438 spigot 1;
 #X obj 392 470 i 0;
 #X obj 501 369 i 1;

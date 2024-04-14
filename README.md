@@ -1,3 +1,36 @@
+# Notes for second synth layer
+
+This patch adds six more synth slots without sacrificing any pattern slots.
+
+To install the extra synths add more synth modules with names
+`7-...` to `12-...`. Note that you need a hyphen immediately after the slot
+number.
+
+To access one of these synths hold down the shift button and double tap one
+of the six synth buttons. For example, if you hold shift and double tap
+synth button 1 (B below middle C) you get synth 7.
+If you hold shift and double tap
+synth button 2 (middle C) you get synth 8. And so on.
+
+If there is no synth module in a slot you select then you won't get any
+sound.
+
+The double tap time is 500ms. That's the time required from pressing
+a button down the first time, to pressing the same button down a second time.
+
+The changes to allow this are all in mother.pd:
+* In [pd synth-select] there is a new patch [pd synth-select-layer].
+* In [pd synth-select] there is a new selection object to load synths 7 to 12.
+* In [pd auto-load-synths] we change [i 6] to [i 12] to load more synth modules.
+* In [pd auto-load-synths] we send more loadbangs (they go to the new synth modules).
+* In [pd auto-load-synths] we load filenames that start with `%d-` instead
+of just `%d`, in case a folder called `10-MySynth` gets confused with
+`1-MyOtherSynth`.
+
+Beware that loading six more synths will add to the device's startup time.
+This may or may not be noticeable.
+
+
 # 201 PocketPiano
 
 The software for the pocket piano consists of two parts: a PureData (Pd) patch and a controller program. 
