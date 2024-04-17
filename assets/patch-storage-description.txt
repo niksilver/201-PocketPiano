@@ -1,0 +1,17 @@
+This is an alternative mother patch that adds six more synth slots without sacrificing any pattern slots.
+
+The 201 Pocket Piano functions entirely as usual, and you still
+have access to synth slots 1-6 in the normal way. However, you
+can access additional slots 7-12 by holding down shift and
+double tapping one of the synth buttons.
+For example, if you hold shift and double tap synth button 1 (B below
+middle C) you get synth 7. If you hold shift and double tap synth button 2
+(middle C) you get synth 8. And so on.
+
+Note that this is a variation of mother patch version 1.2.
+
+There is more information on the GitHub page.
+
+GitHub page: https://github.com/niksilver/201-PocketPiano/tree/second-synth-layer
+
+Photo is Creative Commons, from https://www.flickr.com/photos/raeallen/96238870/
