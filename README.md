@@ -1,6 +1,8 @@
-# Notes for second synth layer
+# Notes for second synth[*] layer
 
-This patch adds six more synth slots without sacrificing any pattern slots.
+This patch adds six more synth slots and six more pattern slots.
+
+[*] and pattern
 
 ## Installation and use
 
@@ -17,19 +19,28 @@ synth button 2 (middle C) you get synth 8. And so on.
 If there is no synth module in a slot you select then you won't get any
 sound.
 
+Installing and using extra patterns is exactly the same, but installation
+is in the patterns folder.
+
 The double tap time is 500ms. That's the time required from pressing
 a button down the first time, to pressing the same button down a second time.
 
+You don't need to fill all twelve pattern or synth slots. But if you
+try to use a slot that isn't filled then you won't get any sound.
+
 ## Changes
 
-The changes to allow this are all in mother.pd:
+The changes to allow the second synth layer are all in mother.pd:
 * In [pd synth-select] there is a new patch [pd synth-select-layer].
 * In [pd synth-select] there is a new selection object to load synths 7 to 12.
 * In [pd auto-load-synths] we change [i 6] to [i 12] to load more synth modules.
 * In [pd auto-load-synths] we send more loadbangs (they go to the new synth modules).
-* In [pd auto-load-synths] we load filenames that start with `%d-` instead
-of just `%d`, in case a folder called `10-MySynth` gets confused with
+* In [pd auto-load-synths] the [makefilename] object loads filenames that start with `%d-*` instead
+of just `%d*`, thatk a folder called `10-MySynth` doesn't get confused with
 `1-MyOtherSynth`.
+
+The changes to allow the second pattern layer are exactly the same as for the
+second synth layer, but for the pattern patches.
 
 ## Important notes
 
@@ -40,7 +51,8 @@ software. Otherwise it may not work as expected, and if you've made your own
 changes to v1.2 you will lose those.
 
 Beware that loading six more synths will add to the device's startup time.
-This may or may not be noticeable.
+This may or may not be noticeable. It also depends on which synths
+you choose.
 
 
 # 201 PocketPiano
