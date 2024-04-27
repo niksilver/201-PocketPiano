@@ -34,12 +34,15 @@ a button down the first time, to pressing the same button down a second time.
 If you select a pattern or synth from the second layer then its
 corresponding LED will blink.
 
-If you don't like the blinking you can turn this off by editing the
-mother patch.
-For pattern blinking go [pd leds] > [pd pattern-leds] >
-[pd blink-second layer] and follow the comments.
-For synth blinking go [pd leds] > [pd synth-leds] >
-[pd blink-second layer] and follow the comments.
+This may not be what you want. The blinking doesn't play well
+with the Prese(p)tavox synth (because that repurposes the LEDs),
+or perhaps you just don't like it.
+
+If that's thet case, you can turn off the blinking by editing the mother patch.
+For synth blinking go to [pd leds] > [pd synth-leds] >
+[pd blink-second-synth-layer] and follow the comment next
+to the [moses] object.
+Similarly for pattern blinking.
 
 ## Changes
 
@@ -51,7 +54,7 @@ The changes to allow the second synth layer are all in mother.pd:
 * In [pd auto-load-synths] the [makefilename] object loads filenames that start with `%d-*` instead
 of just `%d*`, thatk a folder called `10-MySynth` doesn't get confused with
 `1-MyOtherSynth`.
-* In [pd leds] > [pd synth-leds] there is a new patch [pd blink-second-pattern-layer].
+* In [pd leds] > [pd synth-leds] there is a new patch [pd blink-second-synth-layer].
 
 The changes to allow the second pattern layer are exactly the same as for the
 second synth layer, but for the pattern patches.
@@ -61,12 +64,12 @@ second synth layer, but for the pattern patches.
 This is a direct fork of v1.2 of the 201 Pocket Piano software. That means
 that either you should install all the files, or---if you just want to
 copy over mother.pd---you should be copying it over the default v1.2
-software. Otherwise it may not work as expected, and if you've made your own
+software. Otherwise it may not work as expected. Also, if you've made your own
 changes to v1.2 you will lose those.
 
 Beware that loading six more synths will add to the device's startup time.
-This may or may not be noticeable. It also depends on which synths
-you choose.
+How much startup time is added depends on which synths you choose.
+The resulting delay may or may not be noticeable.
 
 
 # 201 PocketPiano
