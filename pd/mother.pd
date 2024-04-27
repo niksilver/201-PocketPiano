@@ -207,7 +207,7 @@
 #X obj 591 69 v pattern-num;
 #X obj 591 94 v seq-state;
 #X obj 591 119 v latch-state;
-#N canvas 558 -957 842 481 leds 1;
+#N canvas 558 -957 842 481 leds 0;
 #X obj 351 33 array define led1 3;
 #X obj 351 55 array define led2 3;
 #X obj 351 78 array define led3 3;
@@ -277,7 +277,7 @@
 #X msg 323 273 send /leds \$1 \$2 \$3 \$4 \$5 \$6 \$7 \$8 \$9, f 65
 ;
 #X obj 324 249 pack 0 0 0 0 0 0 0 0 0, f 43;
-#N canvas 344 212 834 490 synth-leds 1;
+#N canvas 344 212 834 490 synth-leds 0;
 #X obj 112 34 r synth-num;
 #X obj 112 97 t b f;
 #X obj 135 321 s led3-set;
