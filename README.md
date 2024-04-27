@@ -51,7 +51,7 @@ The changes to allow the second synth layer are all in mother.pd:
 * In [pd auto-load-synths] the [makefilename] object loads filenames that start with `%d-*` instead
 of just `%d*`, thatk a folder called `10-MySynth` doesn't get confused with
 `1-MyOtherSynth`.
-* In [pd leds] > [pd synth-leds] there is a new patch [pd blink-second layer].
+* In [pd leds] > [pd synth-leds] there is a new patch [pd blink-second-pattern-layer].
 
 The changes to allow the second pattern layer are exactly the same as for the
 second synth layer, but for the pattern patches.
