@@ -4,11 +4,16 @@ This patch adds six more synth slots and six more pattern slots.
 
 [*] and pattern
 
-## Installation and use
+## Installing extra synths and patterns
 
 To install the extra synths add more synth modules with folder names
 `7-...` to `12-...`. Note that you need a hyphen immediately after the slot
 number.
+
+Installing extra patterns is exactly the same, but in the patterns folder.
+Again, make sure you use hyphens in folder names.
+
+## Use
 
 To access one of these synths hold down the shift button and double tap one
 of the six synth buttons. For example, if you hold shift and double tap
@@ -16,17 +21,25 @@ synth button 1 (B below middle C) you get synth 7.
 If you hold shift and double tap
 synth button 2 (middle C) you get synth 8. And so on.
 
-If there is no synth module in a slot you select then you won't get any
-sound.
+Similarly, use a double tap to access patterns 7 to 12.
 
-Installing and using extra patterns is exactly the same, but installation
-is in the patterns folder.
+You don't need to fill all twelve pattern or synth slots. But if you
+try to use a slot that isn't filled then you won't get any sound.
 
 The double tap time is 500ms. That's the time required from pressing
 a button down the first time, to pressing the same button down a second time.
 
-You don't need to fill all twelve pattern or synth slots. But if you
-try to use a slot that isn't filled then you won't get any sound.
+## Blinking LEDS
+
+If you select a pattern or synth from the second layer then its
+corresponding LED will blink.
+
+If you don't like the blinking you can turn this off by editing the
+mother patch.
+For pattern blinking go [pd leds] > [pd pattern-leds] >
+[pd blink-second layer] and follow the comments.
+For synth blinking go [pd leds] > [pd synth-leds] >
+[pd blink-second layer] and follow the comments.
 
 ## Changes
 
@@ -38,6 +51,7 @@ The changes to allow the second synth layer are all in mother.pd:
 * In [pd auto-load-synths] the [makefilename] object loads filenames that start with `%d-*` instead
 of just `%d*`, thatk a folder called `10-MySynth` doesn't get confused with
 `1-MyOtherSynth`.
+* In [pd leds] > [pd synth-leds] there is a new patch [pd blink-second layer].
 
 The changes to allow the second pattern layer are exactly the same as for the
 second synth layer, but for the pattern patches.
