@@ -35,11 +35,13 @@ If you select a pattern or synth from the second layer then its
 corresponding LED will blink.
 
 This may not be what you want. The blinking doesn't play well
-with the Prese(p)tavox synth (because that repurposes the LEDs),
-or perhaps you just don't like it.
+with the Prese(p)tavox synth LEDs because it repurposes them,
+although it's fine if you put Prese(p)tavox in the first synth
+layer and only use patterns from the first pattern layer.
+Or perhaps you just don't like the blinking.
 
 If that's thet case, you can turn off the blinking by editing the mother patch.
-For synth blinking go to [pd leds] > [pd synth-leds] >
+To switch off synth blinking go to [pd leds] > [pd synth-leds] >
 [pd blink-second-synth-layer] and follow the comment next
 to the [moses] object.
 Similarly for pattern blinking.
